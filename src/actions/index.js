@@ -1,1 +1,3 @@
-// Coloque aqui suas actions.
+const submitForm = (state) => ({ type: 'SUBMIT', payload: state });
+
+export default submitForm;
