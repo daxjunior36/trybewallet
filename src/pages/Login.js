@@ -54,8 +54,7 @@ class Login extends React.Component {
   // }
 
   render() {
-    const { email, password } = this.props;
-    const { boleano } = this.state;
+    const { boleano, email, password } = this.state;
     return (
       <div>
         email
@@ -94,19 +93,11 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-  email: propTypes.string.isRequired,
-  password: propTypes.string.isRequired,
   enviaEmail: propTypes.func.isRequired,
-  history: propTypes.shape.isRequired,
+  history: propTypes.shape({ push: propTypes.func.isRequired }).isRequired,
 
 };
 const mapDispatchToProps = (dispatch) => ({
   enviaEmail: (parametro) => dispatch(submitForm(parametro)),
 });
 export default connect(null, mapDispatchToProps)(Login);
-
-// const mapDispatchToProps = (dispatch) => ({
-
-// });
-
-// export default connect(null, mapDispatchToProps)(Login);
