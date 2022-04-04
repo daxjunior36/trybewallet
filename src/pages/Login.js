@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
-import submitForm from '../actions';
+import { submitForm } from '../actions';
 
 const CARACTER = 6;
 
