@@ -5,9 +5,43 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3b3c40;
+  color: #f2cb05;
+  
+  }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.input_password, .input_email {
+  max-width: 30rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 5px 2px 5px;
+  color: rgb(7, 6, 6);
+  border-radius: 8px;
+}
+
+h1{
+color: #f2bb05;
+font-size: 50px;
+display: flex;
+align-items: center;
+flex-direction: column;
+flex-wrap: wrap;
+margin: 10px 10px;
+margin: 1.2rem auto;
+padding: 20px 5px 15px;
+border: 2px solid rgb(157, 177, 174);
+background-color: #7b878c;
+border-radius: 10px;
+box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.4);
 }

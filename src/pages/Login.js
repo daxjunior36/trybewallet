@@ -57,8 +57,8 @@ class Login extends React.Component {
     const { boleano, email, password } = this.state;
     return (
       <div>
-        email
         <input
+          placeholder="E-mail"
           className="input_email"
           id=""
           type="text"
@@ -67,8 +67,8 @@ class Login extends React.Component {
           onChange={ this.onInputChange }
           data-testid="email-input"
         />
-        password
         <input
+          placeholder="Password"
           className="input_password"
           id=""
           type="text"
