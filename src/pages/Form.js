@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 
 class Form extends React.Component {
   constructor() {
@@ -76,6 +77,12 @@ class Form extends React.Component {
     );
   }
 }
+
+Form.propTypes = {
+  siglas: propTypes.arrayOf(propTypes.string).isRequired,
+};
+
 const mapStateToProps = (state) => ({
   siglas: state.wallet.currencies });
+
 export default connect(mapStateToProps, null)(Form);
