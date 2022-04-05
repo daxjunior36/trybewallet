@@ -67,13 +67,27 @@ class Form extends React.Component {
 
         <select data-testid="tag-input">
           <option value="Alimentação">Alimentação</option>
-          <option value="Lazera">Lazer</option>
+          <option value="Lazer">Lazer</option>
           <option value="Trabalho">Trabalho</option>
           <option value="Transporte">Transporte</option>
           <option value="Saúde">Saúde</option>
         </select>
 
+        <table>
+          <tr>
+            <th>Descrição</th>
+            <th>Tag</th>
+            <th>Método de pagamento</th>
+            <th>Valor</th>
+            <th>Moeda</th>
+            <th>Câmbio utilizado</th>
+            <th>Valor convertido</th>
+            <th>Moeda de conversão</th>
+            <th>Editar/Excluir</th>
+          </tr>
+        </table>
       </form>
+
     );
   }
 }

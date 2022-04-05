@@ -41,7 +41,40 @@ margin: 10px 10px;
 margin: 1.2rem auto;
 padding: 20px 5px 15px;
 border: 2px solid rgb(157, 177, 174);
-background-color: #7b878c;
+background-color: #2e3335;
 border-radius: 10px;
 box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.4);
 }
+
+table, th, td {
+  border: 1px solid#f2bb05 ;
+  border-collapse: collapse;
+}
+
+.button-sub {
+  font-family:Arial, Helvetica, sans-serif;
+  display: inline-block;
+  font-size: 1em;
+  padding: 10px 15px;
+  margin-top: 15px;
+  margin-bottom: 60px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: button-bg;
+  color: button-text-color;
+  border-radius:4px;
+  border:none;
+  cursor: pointer;
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+  box-shadow: 0 2px 25px #f2bb05;
+  /* focus {
+    outline: 0;
+  } */
+}
+/*   
+  fuschia: #ff0043;
+  button-bg: $fuschia;
+  button-text-color: #fff;
+  baby-blue: #000000; */
+
