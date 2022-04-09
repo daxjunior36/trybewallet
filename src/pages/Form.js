@@ -1,15 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import { funcCotacaoMoedas } from '../actions';
+
+const ALIMENTACAO = 'Alimentação';
 
 class Form extends React.Component {
   constructor() {
     super();
     this.state = {
-      valDespesa: '',
-      descDespesa: '',
-      // moeda: '',
-      // metodoPagamento: '',
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: ALIMENTACAO,
+      id: 0,
+
+      // expenses: [],
+
     };
   }
 
@@ -17,22 +25,39 @@ class Form extends React.Component {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
-    }, () => { this.validacao(); });
+    });
   }
 
+  informaDespesa = () => {
+    // const { state } = this;
+    this.setState((prevState) => ({ id: prevState.id + 1 }));
+    const { value, description, currency, method, tag, id } = this.state;
+    const { cotacao } = this.props;
+    // adicionaDespesa({ value, description, currency, method, tag, id, exchangeRates });
+    cotacao({ value, description, currency, method, tag, id });
+
+    this.setState({
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: ALIMENTACAO,
+    });
+  };
+
   render() {
-    const { valDespesa, descDespesa } = this.state;
+    const { value, description, currency, method, tag } = this.state;
     const { siglas } = this.props;
-    console.log(siglas);
+    // console.log(this.state.currency);
     return (
       <form>
         <div>
           <input
             className="value-input"
             type="number"
-            name="valor-despesa"
+            name="value"
             data-testid="value-input"
-            value={ valDespesa }
+            value={ value }
             onChange={ this.onInputChange }
           />
         </div>
@@ -40,33 +65,62 @@ class Form extends React.Component {
           <input
             className="des_despesa"
             type="text"
-            name="desc_despesa"
+            name="description"
             data-testid="description-input"
-            value={ descDespesa }
+            value={ description }
             onChange={ this.onInputChange }
           />
         </div>
-        <label htmlFor="moeda">
+        <div className="button-add">
+          <button
+            type="button"
+            onClick={ this.informaDespesa }
+          >
+            Adicionar despesa
+          </button>
+        </div>
+        <label className="moeda" htmlFor="moeda">
           Moeda
           <select
             data-testid="currency-input"
+            value={ currency }
             id="moeda"
+            name="currency"
+            onChange={ this.onInputChange }
           >
-
-            {siglas.map((element) => <option key={ element }>{element}</option>)}
+            {siglas.map((element) => (
+              <option
+                value={ element }
+                key={ element }
+              >
+                {element}
+              </option>
+            ))}
             ;
 
           </select>
         </label>
 
-        <select data-testid="method-input">
+        <select
+          className="moeda"
+          data-testid="method-input"
+          name="method"
+          value={ method }
+          onChange={ this.onInputChange }
+        >
           <option value="Dinheiro">Dinheiro</option>
           <option value="Cartão de crédito">Cartão de crédito</option>
           <option value="Cartão de débito">Cartão de débito</option>
         </select>
 
-        <select data-testid="tag-input">
-          <option value="Alimentação">Alimentação</option>
+        <select
+          className="moeda"
+          data-testid="tag-input"
+          value={ tag }
+          name="tag"
+          onChange={ this.onInputChange }
+        >
+          <option value={ ALIMENTACAO }>Alimentação</option>
           <option value="Lazer">Lazer</option>
           <option value="Trabalho">Trabalho</option>
           <option value="Transporte">Transporte</option>
@@ -94,9 +148,15 @@ class Form extends React.Component {
 
 Form.propTypes = {
   siglas: propTypes.arrayOf(propTypes.string).isRequired,
+  cotacao: propTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   siglas: state.wallet.currencies });
 
-export default connect(mapStateToProps, null)(Form);
+const mapDispatchToProps = (dispatch) => ({
+  // adicionaDespesa: (state) => dispatch(pegarStado(state)),
+  cotacao: (data) => dispatch(funcCotacaoMoedas(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

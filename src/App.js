@@ -5,7 +5,7 @@ import Wallet from './pages/Wallet';
 
 function App() {
   return (
-    <div>
+    <div className="principal">
       <h1>Hello, TrybeWallet!</h1>
 
       <Switch>
