@@ -8,7 +8,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #3b3c40;
+  background-color: #d2d3d9;
   color: #f2cb05;
  
   }
@@ -32,7 +32,6 @@ code {
 
 .principal{
   color: #f2bb05;
-
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -42,13 +41,13 @@ code {
   padding: 40px 30px 45px;
   max-width: 80%;
   border: 2px solid rgb(157, 177, 174);
-  background-color: #2e3335;
+  background-color: #35312e;
   border-radius: 10px;
   box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.4);
 }
 
 h1{
-color: #f2bb05;
+color: #f2e3b6;
 font-size: 50px;
 display: flex;
 align-items: center;
@@ -59,21 +58,23 @@ margin: 2rem auto;
 padding: 20px 5px 15px;
 max-width: 80%;
 border: 2px solid rgb(157, 177, 174);
-background-color: #2c2f32;
+background-color: #35312e;
 border-radius: 10px;
 transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
 box-shadow: 0 2px 25px #f2bb05;
 }
 
-table, th, td, header {
+ table, th, td, header {
+  color: #f2e3b6;
   border: 1px solid #f2bb05 ;
   border-collapse: collapse;
   font-family:Arial, Helvetica, sans-serif;
+  align-items: center;
   display: inline-block;
   font-size: 1em;
-  padding: 10px 15px;
+  padding: 5px 5px;
   flex-wrap: wrap;
-  max-width:95%;
+  /* max-width:100%; */
   margin-top: 15px;
   margin-left: 15px;
   margin-bottom: 20px;
@@ -82,21 +83,20 @@ table, th, td, header {
   background-color: button-bg;
   color: button-text-color;
   border-radius:4px;
-  /* border:none; */
-  cursor: pointer;
+  /* cursor: pointer; */
   position: relative;
   transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
   box-shadow: 0 2px 25px #f2bb05;
-}
+} 
 
 .button-sub  {
-  /* border: solid red 1px; */
+  color: #f2e3b6;
   font-family:Arial, Helvetica, sans-serif;
   display: inline-block;
   font-size: 1em;
-  padding: 10px 15px;
-  margin-top: 15px;
-  margin-bottom: 10px;
+  padding: 5px 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   -webkit-appearance: none;
   appearance: none;
   background-color: button-bg;
@@ -107,13 +107,11 @@ table, th, td, header {
   position: relative;
   transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
   box-shadow: 0 2px 25px #f2bb05;
-  /* focus {
-    outline: 0;
-  } */
+
 }
 
 .value-input, .des_despesa {
-  font-family:Arial, Helvetica, sans-serif;
+   font-family:Arial, Helvetica, sans-serif;
   display: inline-block;
   font-size: 1em;
   margin-left: 10px;
@@ -154,14 +152,13 @@ table, th, td, header {
 }
 
 .moeda{
-  font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
   display: inline-block;
   font-size: 1em;
   padding: 5px 10px;
   margin-top: 5px;
   margin: 5px;
   margin-bottom: 5px;
-
   -webkit-appearance: none;
   appearance: none;
   background-color: button-bg;

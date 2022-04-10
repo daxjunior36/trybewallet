@@ -47,8 +47,8 @@ class Form extends React.Component {
 
   render() {
     const { value, description, currency, method, tag } = this.state;
-    const { siglas } = this.props;
-    // console.log(this.state.currency);
+    const { siglas, nomeMoeda } = this.props;
+    console.log(nomeMoeda);
     return (
       <form>
         <div>
@@ -96,7 +96,6 @@ class Form extends React.Component {
                 {element}
               </option>
             ))}
-            ;
 
           </select>
         </label>
@@ -139,6 +138,40 @@ class Form extends React.Component {
             <th>Moeda de conversão</th>
             <th>Editar/Excluir</th>
           </tr>
+          {nomeMoeda.map((element) => (
+            <tr
+              key={ element }
+            >
+
+              <td>
+                {element.description}
+              </td>
+              <td>
+                {element.tag}
+              </td>
+              <td>
+                {element.method}
+              </td>
+              <td>
+                {Number(element.value).toFixed(2)}
+              </td>
+              <td>
+                {element.exchangeRates[element.currency].name.split('/Real Brasileiro')}
+              </td>
+              <td>
+                {Number(element.exchangeRates[element.currency].ask).toFixed(2)}
+              </td>
+              <td>
+                {(Number(element.exchangeRates[element.currency].ask)
+              * Number(element.value)).toFixed(2)}
+              </td>
+              <td> Real</td>
+              <td>
+                <button type="button"> Editar/Excluir </button>
+              </td>
+            </tr>
+
+          ))}
         </table>
       </form>
 
@@ -149,14 +182,18 @@ class Form extends React.Component {
 Form.propTypes = {
   siglas: propTypes.arrayOf(propTypes.string).isRequired,
   cotacao: propTypes.func.isRequired,
+  nomeMoeda: propTypes.arrayOf(propTypes.string).isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  siglas: state.wallet.currencies });
+  siglas: state.wallet.currencies,
+  nomeMoeda: state.wallet.expenses,
+
+});
 
 const mapDispatchToProps = (dispatch) => ({
-  // adicionaDespesa: (state) => dispatch(pegarStado(state)),
   cotacao: (data) => dispatch(funcCotacaoMoedas(data)),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);
