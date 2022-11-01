@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { funcCotacaoMoedas } from '../actions';
+import '../styles/Wallet.css';
 
 const ALIMENTACAO = 'Alimentação';
 
@@ -50,131 +51,137 @@ class Form extends React.Component {
     const { siglas, nomeMoeda } = this.props;
     console.log(nomeMoeda);
     return (
-      <form>
-        <div>
+      <div className="wallet_container">
+        <form className="form">
+          <div>
+            <input
+              placeholder="Desc_Despesa"
+              className="input_despesa"
+              type="text"
+              name="description"
+              data-testid="description-input"
+              value={ description }
+              onChange={ this.onInputChange }
+            />
+            <select
+              className="input_tag"
+              data-testid="tag-input"
+              value={ tag }
+              name="tag"
+              onChange={ this.onInputChange }
+            >
+              <option value={ ALIMENTACAO }>Alimentação</option>
+              <option value="Lazer">Lazer</option>
+              <option value="Trabalho">Trabalho</option>
+              <option value="Transporte">Transporte</option>
+              <option value="Saúde">Saúde</option>
+            </select>
+            <select
+              className="input_method"
+              data-testid="method-input"
+              name="method"
+              value={ method }
+              onChange={ this.onInputChange }
+            >
+              <option value="Dinheiro">Dinheiro</option>
+              <option value="Cartão de crédito">Cartão de crédito</option>
+              <option value="Cartão de débito">Cartão de débito</option>
+            </select>
+
+          </div>
           <input
-            className="value-input"
+            placeholder="Valor"
+            id="value-input"
+            className="input_value"
             type="number"
             name="value"
             data-testid="value-input"
             value={ value }
             onChange={ this.onInputChange }
           />
-        </div>
-        <div>
-          <input
-            className="des_despesa"
-            type="text"
-            name="description"
-            data-testid="description-input"
-            value={ description }
-            onChange={ this.onInputChange }
-          />
-        </div>
-        <div className="button-add">
-          <button
-            type="button"
-            onClick={ this.informaDespesa }
-          >
-            Adicionar despesa
-          </button>
-        </div>
-        <label className="moeda" htmlFor="moeda">
-          Moeda
-          <select
-            data-testid="currency-input"
-            value={ currency }
-            id="moeda"
-            name="currency"
-            onChange={ this.onInputChange }
-          >
-            {siglas.map((element) => (
-              <option
-                value={ element }
+          <label className="input_moeda" htmlFor="moeda">
+            Moeda
+            <select
+              data-testid="currency-input"
+              value={ currency }
+              id="moeda"
+              name="currency"
+              onChange={ this.onInputChange }
+            >
+              {siglas.map((element) => (
+                <option
+                  value={ element }
+                  key={ element }
+                >
+                  {element}
+                </option>
+              ))}
+
+            </select>
+          </label>
+
+          <div className="button-add">
+            <button
+              type="button"
+              onClick={ this.informaDespesa }
+            >
+              Adicionar despesa
+            </button>
+          </div>
+        </form>
+        <table>
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Tag</th>
+              <th>Método de pagamento</th>
+              <th>Valor</th>
+              <th>Moeda</th>
+              <th>Câmbio utilizado</th>
+              <th>Valor convertido</th>
+              <th>Moeda de conversão</th>
+              <th>Editar/Excluir</th>
+            </tr>
+          </thead>
+          <tbody>
+            {nomeMoeda.map((element) => (
+              <tr
                 key={ element }
               >
-                {element}
-              </option>
+
+                <td>
+                  {element.description}
+                </td>
+                <td>
+                  {element.tag}
+                </td>
+                <td>
+                  {element.method}
+                </td>
+                <td>
+                  {Number(element.value).toFixed(2)}
+                </td>
+                <td>
+                  {element.exchangeRates[element.currency].name.split('/Real Brasileiro')}
+                </td>
+                <td>
+                  {Number(element.exchangeRates[element.currency].ask).toFixed(2)}
+                </td>
+                <td>
+                  {(Number(element.exchangeRates[element.currency].ask)
+                * Number(element.value)).toFixed(2)}
+                </td>
+                <td> Real</td>
+                <td>
+                  <button type="button"> Editar/Excluir </button>
+                </td>
+              </tr>
+
             ))}
-
-          </select>
-        </label>
-
-        <select
-          className="moeda"
-          data-testid="method-input"
-          name="method"
-          value={ method }
-          onChange={ this.onInputChange }
-        >
-          <option value="Dinheiro">Dinheiro</option>
-          <option value="Cartão de crédito">Cartão de crédito</option>
-          <option value="Cartão de débito">Cartão de débito</option>
-        </select>
-
-        <select
-          className="moeda"
-          data-testid="tag-input"
-          value={ tag }
-          name="tag"
-          onChange={ this.onInputChange }
-        >
-          <option value={ ALIMENTACAO }>Alimentação</option>
-          <option value="Lazer">Lazer</option>
-          <option value="Trabalho">Trabalho</option>
-          <option value="Transporte">Transporte</option>
-          <option value="Saúde">Saúde</option>
-        </select>
-
-        <table>
-          <tr>
-            <th>Descrição</th>
-            <th>Tag</th>
-            <th>Método de pagamento</th>
-            <th>Valor</th>
-            <th>Moeda</th>
-            <th>Câmbio utilizado</th>
-            <th>Valor convertido</th>
-            <th>Moeda de conversão</th>
-            <th>Editar/Excluir</th>
-          </tr>
-          {nomeMoeda.map((element) => (
-            <tr
-              key={ element }
-            >
-
-              <td>
-                {element.description}
-              </td>
-              <td>
-                {element.tag}
-              </td>
-              <td>
-                {element.method}
-              </td>
-              <td>
-                {Number(element.value).toFixed(2)}
-              </td>
-              <td>
-                {element.exchangeRates[element.currency].name.split('/Real Brasileiro')}
-              </td>
-              <td>
-                {Number(element.exchangeRates[element.currency].ask).toFixed(2)}
-              </td>
-              <td>
-                {(Number(element.exchangeRates[element.currency].ask)
-              * Number(element.value)).toFixed(2)}
-              </td>
-              <td> Real</td>
-              <td>
-                <button type="button"> Editar/Excluir </button>
-              </td>
-            </tr>
-
-          ))}
+          </tbody>
         </table>
-      </form>
 
+      </div>
     );
   }
 }

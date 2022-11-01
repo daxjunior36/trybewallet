@@ -1,0 +1,88 @@
+input {
+  border-radius: 6px;
+  height: 25px;
+  margin: 5px 10px;
+  padding-left: 5px;
+}
+
+button {
+  border-radius: 6px;
+  height: 25px;
+  margin: 5px 10px;
+  padding-left: 5px;
+  text-align: center;
+  width: 150px;
+}
+
+select {
+  border-radius: 6px;
+  height: 25px;
+  margin: 5px 10px;
+}
+
+table {
+  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.25);
+  background-color: #46244c;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-collapse: collapse;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  width: 100%;
+}
+
+thead {
+  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.25);
+  background-color: #363062;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+th {
+  color: white;
+  padding: 12px 8px;
+}
+
+td {
+  padding: 12px 8px;
+  text-align: center;
+}
+
+tr {
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: large;
+}
+
+tr:nth-child( even ) {
+  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.25);
+  background-color: #e9d5da;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  color: black;
+  font-size: large;
+}
+
+
+.wallet_container {
+  font-family: Impact, Haettenschweiler 'Arial Narrow Bold', sans-serif;
+}
+
+.form {
+  display: flex;
+}
+
+.input_value {
+  width: 100px;
+
+}
+
+.input_despesa {
+  width: 100px;
+
+}
+

@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { submitForm } from '../actions';
+import '../styles/login.css';
 
 const CARACTER = 6;
 
@@ -56,38 +57,42 @@ class Login extends React.Component {
   render() {
     const { boleano, email, password } = this.state;
     return (
-      <div>
-        <input
-          placeholder="E-mail"
-          className="input_email"
-          id=""
-          type="text"
-          name="email"
-          value={ email }
-          onChange={ this.onInputChange }
-          data-testid="email-input"
-        />
-        <input
-          placeholder="Password"
-          className="input_password"
-          id=""
-          type="text"
-          name="password"
-          value={ password }
-          data-testid="password-input"
-          onChange={ this.onInputChange }
-        />
-        <div className="button-sub">
+      <div className="login_main_container">
+        <div className="login_main">
+          <h1> Trybe Wallet</h1>
+          <input
+            placeholder="E-mail"
+            className="input_email login_input"
+            id=""
+            type="text"
+            name="email"
+            value={ email }
+            onChange={ this.onInputChange }
+            data-testid="email-input"
+          />
+          <input
+            placeholder="Password"
+            className="input_password login_input"
+            id=""
+            type="text"
+            name="password"
+            value={ password }
+            data-testid="password-input"
+            onChange={ this.onInputChange }
+          />
+
           <button
+            className="button-sub"
             type="button"
             disabled={ boleano }
             onClick={ this.handleClickSubimit }
           >
-            Entrar
+            Login
           </button>
-        </div>
 
+        </div>
       </div>
+
     );
   }
 }

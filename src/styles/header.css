@@ -1,0 +1,29 @@
+body {
+  background: rgb(241, 250, 252);
+}
+
+h1 {
+  margin: 10px;
+}
+
+.header_container {
+  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.25);
+  background-color: #46244c;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  color: white;
+  display: flex;
+  font-family: Impact, Haettenschweiler 'Arial Narrow Bold', sans-serif;
+  justify-content: space-between;
+}
+
+.header_user {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  width: 400px;
+}
+

@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 import Header from './Header';
 import { armazenaSiglas } from '../actions';
 import Form from './Form';
+import '../styles/Wallet.css';
 
 class Wallet extends React.Component {
   componentDidMount() {
@@ -14,7 +15,7 @@ class Wallet extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="wallet_main">
         <Header />
         <Form />
       </div>
