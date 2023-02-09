@@ -1,4 +1,4 @@
-# Projeto TRYBE-WALLET
+# PROJETO TRYBE-WALLET
 
 Neste projeto foi desenvolvido uma carteira de controle de gastos com conversor de moedas. 
 
